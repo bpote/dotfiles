@@ -12,9 +12,6 @@
   mc = clone --branch=master --depth 50
   s = status -s
 
-[commit]
-  gpgsign = true
-
 [diff "bin"]
   textconv = hexdump -v -C
 
