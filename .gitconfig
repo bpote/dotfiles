@@ -5,12 +5,24 @@
 [core]
   editor = vim
   excludesfile = ~/.gitignore
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
   c = clone --recursive --depth 50
+  commend = commit --amend --no-edit --reset-author
+  cp = !git checkout -
+  fit = !git add -A && git commit -m \"$(curl -s http://whatthecommit.com/index.txt)\"
+  it = !git init && git commit -m "root" --allow-empty
   l = log --decorate --pretty=oneline -n 20 --graph --abbrev-commit
+  la = log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lp = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
   mc = clone --branch=master --depth 50
+  rp = remote prune origin
   s = status -s
+  d = diff --cached
+  patch = !git --no-pager diff --no-color
 
 [diff "bin"]
   textconv = hexdump -v -C
@@ -22,3 +34,8 @@
 
 [pull]
   rebase = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22

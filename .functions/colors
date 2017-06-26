@@ -1,0 +1,9 @@
+colors() {
+  if [[ "${1}x" != "x" ]]; then
+    printf "\x1b[38;5;%smcolour%s" "${1}" "${1}"
+  else
+    for i in {0..255}; do
+      printf "\x1b[38;5;%sm%s\t" "${i}" "${i}"
+    done
+  fi
+}

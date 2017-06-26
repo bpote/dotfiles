@@ -21,12 +21,33 @@ fi
 
 # paths and other exports
 
-export PATH="${HOME}/bin:${HOME}/.asdf/installs/elixir/1.4.0/.mix/escripts:${PATH}"
+export ANDROID_HOME="${HOME}/Android/Sdk"
+export PATH="${HOME}/.bin:${HOME}/.asdf/installs/elixir/1.4.0/.mix/escripts:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}:${HOME}/tools/buck/bin"
 export EDITOR="vim"
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
+export PYTHONDONTWRITEBYTECODE=1
 export PYTHONIOENCODING='UTF-8'
+export NODE_REPL_HISTORY_SIZE=5000
+export GOPATH="${HOME}/projects/go"
+export PATH="${GOPATH}/bin:${PATH}"
+export SAANCHO_CLIPBOARD="true"
+export MINICOM="-m -c on"
+export WORKON_HOME=~/pyenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export FZF_DEFAULT_COMMAND="ag -l --nocolor --hidden -g"
+export COLORTERM="gnome-terminal"
+[[ -f "/usr/local/bin/virtualenvwrapper_lazy.sh" ]] && source /usr/local/bin/virtualenvwrapper_lazy.sh
+[[ -f "${HOME}/.pythonrc.py" ]] && export PYTHONSTARTUP="${HOME}/.pythonrc.py"
+export NVM_DIR="${HOME}/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
+alias node='unalias node ; unalias npm ; nvm use default ; node $@'
+alias npm='unalias node ; unalias npm ; nvm use default ; npm $@'
 
 source "${HOME}/.bash_prompt"
+
+for f in ${HOME}/.functions/*; do
+  source $f
+done
